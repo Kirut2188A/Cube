@@ -13,15 +13,15 @@ document.addEventListener('touchend', stopDragging);
 
 function startDragging(e) {
   isDragging = true;
-  previousX = e.clientX || e.touches[0].clientX;
-  previousY = e.clientY || e.touches[0].clientY;
+  previousX = getEventX(e);
+  previousY = getEventY(e);
 }
 
 function rotateCube(e) {
   if (!isDragging) return;
 
-  const currentX = e.clientX || e.touches[0].clientX;
-  const currentY = e.clientY || e.touches[0].clientY;
+  const currentX = getEventX(e);
+  const currentY = getEventY(e);
 
   const deltaX = currentX - previousX;
   const deltaY = currentY - previousY;
@@ -34,4 +34,12 @@ function rotateCube(e) {
 
 function stopDragging() {
   isDragging = false;
+}
+
+function getEventX(event) {
+  return event.clientX || event.touches[0].clientX;
+}
+
+function getEventY(event) {
+  return event.clientY || event.touches[0].clientY;
 }
