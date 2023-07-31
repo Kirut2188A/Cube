@@ -2,6 +2,8 @@ const cube = document.getElementById('cube');
 let isDragging = false;
 let previousX, previousY;
 let currentScale = 1.0;
+let currentRotationX = 0;
+let currentRotationY = 0;
 
 cube.addEventListener('mousedown', startDragging);
 cube.addEventListener('touchstart', startDragging);
@@ -32,7 +34,10 @@ function rotateCube(e) {
   previousX = currentX;
   previousY = currentY;
 
-  cube.style.transform = `rotateX(${deltaY * 0.5}deg) rotateY(${deltaX * 0.5}deg) scale(${currentScale})`;
+  currentRotationX += deltaY * 0.5;
+  currentRotationY += deltaX * 0.5;
+
+  cube.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${currentScale})`;
 }
 
 function stopDragging() {
@@ -48,7 +53,7 @@ function zoomCube(e) {
   // Limit the scale to a reasonable range
   currentScale = Math.min(Math.max(currentScale, 0.5), 2.0);
 
-  cube.style.transform = `rotateX(0) rotateY(0) scale(${currentScale})`;
+  cube.style.transform = `rotateX(${currentRotationX}deg) rotateY(${currentRotationY}deg) scale(${currentScale})`;
 }
 
 function getEventX(event) {
