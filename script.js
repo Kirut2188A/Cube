@@ -12,7 +12,7 @@ document.addEventListener('mouseup', stopDragging);
 document.addEventListener('touchend', stopDragging);
 
 cube.addEventListener('click', (event) => {
-  const sideClicked = event.target.textContent.trim();
+  const sideClicked = getClickedSide(event);
   const details = getDetails(sideClicked);
 
   if (details) {
@@ -51,6 +51,11 @@ function getEventX(event) {
 
 function getEventY(event) {
   return event.clientY || event.touches[0].clientY;
+}
+
+function getClickedSide(event) {
+  const sideClicked = event.target.textContent.trim();
+  return sideClicked;
 }
 
 function getDetails(side) {
