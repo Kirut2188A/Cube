@@ -11,6 +11,15 @@ document.addEventListener('touchmove', rotateCube);
 document.addEventListener('mouseup', stopDragging);
 document.addEventListener('touchend', stopDragging);
 
+cube.addEventListener('click', (event) => {
+  const sideClicked = event.target.textContent.trim();
+  const details = getDetails(sideClicked);
+
+  if (details) {
+    alert(details);
+  }
+});
+
 function startDragging(e) {
   isDragging = true;
   previousX = getEventX(e);
@@ -42,4 +51,23 @@ function getEventX(event) {
 
 function getEventY(event) {
   return event.clientY || event.touches[0].clientY;
+}
+
+function getDetails(side) {
+  switch (side) {
+    case 'TETHEROUS':
+      return 'Hi! I am Tetherous. Welcome to my minimalistic website!';
+    case 'GitHub':
+      return 'Check out my GitHub profile at https://github.com/Kirut2188A';
+    case 'Discord: tetherous':
+      return 'You can find me on Discord with the username "tetherous"';
+    case 'Random Gibberish':
+      return 'This side contains random gibberish text that changes every 300 milliseconds';
+    case 'Instagram: ballsinnit':
+      return 'Follow me on Instagram with the username "ballsinnit"';
+    case 'Word Guessing Game':
+      return 'The Word Guessing Game is a fun project available on my GitHub. Try it out!';
+    default:
+      return null;
+  }
 }
