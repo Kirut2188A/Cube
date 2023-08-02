@@ -12,67 +12,67 @@ body {
   perspective: 800px;
 }
 
-.cube, .small-cube {
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  transform-style: preserve-3d;
-}
-
 .cube {
-  background-color: black;
-  color: white;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.small-cube {
-  background-color: gray;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg) scale(1);
+  cursor: grab;
 }
 
 .side {
   position: absolute;
-  width: 150px;
-  height: 150px;
-  border: 2px solid gold;
-  line-height: 150px;
-  font-size: 20px;
+  width: 200px;
+  height: 200px;
+  border: 2px solid gray;
+  line-height: 200px;
+  font-size: 16px;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .front {
-  transform: translateZ(75px);
+  transform: translateZ(100px);
 }
 
 .back {
-  transform: rotateY(180deg) translateZ(75px);
+  transform: rotateY(180deg) translateZ(100px);
 }
 
 .right {
-  transform: rotateY(90deg) translateZ(75px);
+  transform: rotateY(90deg) translateZ(100px);
 }
 
 .left {
-  transform: rotateY(-90deg) translateZ(75px);
+  transform: rotateY(-90deg) translateZ(100px);
 }
 
 .top {
-  transform: rotateX(90deg) translateZ(75px);
+  transform: rotateX(90deg) translateZ(100px);
 }
 
 .bottom {
-  transform: rotateX(-90deg) translateZ(75px);
+  transform: rotateX(-90deg) translateZ(100px);
 }
 
-/* Position the smaller cubes */
-#small-cube-right {
-  top: 30px;
-  left: 220px;
+#cube:hover {
+  cursor: grabbing;
 }
 
-#small-cube-left {
-  top: 30px;
-  left: -220px;
+#random-gibberish {
+  animation: gibberishAnimation 0.3s infinite alternate;
+}
+
+@keyframes gibberishAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+#random-gibberish:hover {
+  animation: none;
 }
